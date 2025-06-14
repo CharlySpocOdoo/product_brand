@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Vista de lista para marcas -->
+        <record id="product_brand_tree_view" model="ir.ui.view">
+            <field name="name">product.brand.list</field>
+            <field name="model">product.brand</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="product_count" string="Productos"/>
+                    <field name="active"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para marcas -->
+        <record id="product_brand_form_view" model="ir.ui.view">
+            <field name="name">product.brand.form</field>
+            <field name="model">product.brand</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_products" 
+                                    type="object" 
+                                    class="oe_stat_button" 
+                                    icon="fa-cubes"
+                                    invisible="product_count == 0">
+                                <field name="product_count" widget="statinfo" string="Productos"/>
+                            </button>
+                        </div>
+                        
+                        <field name="logo" widget="image" class="oe_avatar"/>
+                        
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Nombre de la marca..."/>
+                            </h1>
+                        </div>
+                        
+                        <group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Descripción">
+                                <field name="description" placeholder="Descripción de la marca..."/>
+                            </page>
+                        </notebook>
+                        
+                        <!-- Firma personal de Charlyboy -->
+                        <div class="o_form_sheet_bg">
+                            <div style="text-align: center; padding: 15px; margin-top: 20px; border-top: 2px solid #e9ecef;">
+                                <span style="font-family: 'Segoe UI', Arial, sans-serif; 
+                                             font-size: 14px; 
+                                             font-weight: 600; 
+                                             color: #6c757d; 
+                                             letter-spacing: 1px;
+                                             text-transform: uppercase;">
+                                    designed by 
+                                </span>
+                                <span style="font-family: 'Segoe UI', Arial, sans-serif; 
+                                             font-size: 16px; 
+                                             font-weight: 700; 
+                                             color: #007bff; 
+                                             letter-spacing: 1.5px;
+                                             text-shadow: 0 1px 2px rgba(0,123,255,0.3);">
+                                    Charly boy
+                                </span>
+                                <span style="font-size: 18px; color: #28a745; margin-left: 5px;">✨</span>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de búsqueda para marcas -->
+        <record id="product_brand_search_view" model="ir.ui.view">
+            <field name="name">product.brand.search</field>
+            <field name="model">product.brand</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter string="Activas" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Inactivas" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Estado" name="group_active" context="{'group_by': 'active'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para marcas -->
+        <record id="product_brand_action" model="ir.actions.act_window">
+            <field name="name">Marcas</field>
+            <field name="res_model">product.brand</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    ¡Crea tu primera marca de producto!
+                </p>
+                <p>
+                    Las marcas te ayudan a organizar y categorizar tus productos.
+                    Cada producto debe tener una marca asignada.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

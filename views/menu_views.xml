@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menú principal para Marcas -->
+        <menuitem id="product_brand_menu_root"
+                  name="Marcas"
+                  parent="sale.product_menu_catalog"
+                  action="product_brand_action"
+                  sequence="15"/>
+
+    </data>
+</odoo>
+

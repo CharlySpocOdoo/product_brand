@@ -11,8 +11,7 @@
                 <xpath expr="//field[@name='categ_id']" position="after">
                     <field name="brand_id" 
                            options="{'quick_create': True, 'create_edit': True}"
-                           required="1"
-                           placeholder="tienes que ingresar una marca para tu producto"/>
+                           placeholder="Selecciona una marca para tu producto"/>
                     
                     <!-- Firma personal de Charly boy -->
                     <div style="text-align: right; margin-top: 8px; margin-bottom: 10px;">
